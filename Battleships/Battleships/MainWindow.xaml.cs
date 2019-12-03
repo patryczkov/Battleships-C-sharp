@@ -26,10 +26,11 @@ namespace Battleships
         {
             InitializeComponent();
 
-            CreateBoard();
+            CreateBoard(firstPlayerBoard);
+            CreateBoard(secondPlayerBoard);
         }
 
-        private void CreateBoard()
+        private void CreateBoard(Canvas canvas)
         {
             int height = 10;
             int width = 10;
@@ -40,16 +41,7 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    square = new Square(firstPlayerBoard, i * posGap, j * posGap);
-                }
-            }
-
-            // second player board
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    square = new Square(secondPlayerBoard, i * posGap, j * posGap);
+                    square = new Square(canvas, i * posGap, j * posGap, new Coord(i,j));
                 }
             }
         }
