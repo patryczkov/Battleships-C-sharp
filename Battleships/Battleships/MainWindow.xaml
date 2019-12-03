@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleships"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="700" Width="1200">
     <Grid>
-        
+        <Canvas x:Name="firstPlayerBoard" Height="500" Width="500" Margin="50,50,645,114">
+            <Label x:Name="playerOneLabel" Content="Player 1" FontSize="40" 
+                   Canvas.Left="170" Canvas.Top="500" Height="72" Width="200"/>
+        </Canvas>
+        <Label Content=" A    B    C    D    E    F    G    H    I    J" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Height="54" Width="500" FontSize="30"/>
+        <Label Content="1&#xD;&#xA;2&#xD;&#xA;3&#xD;&#xA;4&#xD;&#xA;5&#xD;&#xA;6&#xD;&#xA;7&#xD;&#xA;8&#xD;&#xA;9&#xD;&#xA;10" Margin="10,54,0,0" Height="554" Width="54" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,5,5,0"/>
+
+        <Canvas x:Name="secondPlayerBoard" Height="500" Width="500" Margin="650,50,42,114">
+            <Label x:Name="playerTwoLabel" Content="Player 2" FontSize="40" 
+                   Canvas.Right="120" Canvas.Top="500" Height="72" Width="200"/>
+        </Canvas>
+        <Label Content=" A    B    C    D    E    F    G    H    I    J" HorizontalAlignment="Left" Margin="651,10,0,0" VerticalAlignment="Top" Height="54" Width="500" FontSize="30"/>
+        <Label Content="1&#xD;&#xA;2&#xD;&#xA;3&#xD;&#xA;4&#xD;&#xA;5&#xD;&#xA;6&#xD;&#xA;7&#xD;&#xA;8&#xD;&#xA;9&#xD;&#xA;10" Margin="597,54,0,0" Height="554" Width="54" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,5,5,0"/>
+
+
     </Grid>
 </Window>

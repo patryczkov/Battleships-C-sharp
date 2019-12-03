@@ -20,9 +20,38 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
+        Square square;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            CreateBoard();
+        }
+
+        private void CreateBoard()
+        {
+            int height = 10;
+            int width = 10;
+            int posGap = 50;
+
+            // first player board
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    square = new Square(firstPlayerBoard, i * posGap, j * posGap);
+                }
+            }
+
+            // second player board
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    square = new Square(secondPlayerBoard, i * posGap, j * posGap);
+                }
+            }
         }
     }
 }
