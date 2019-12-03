@@ -30,7 +30,7 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    square = new Square(canvas, i * posGap, j * posGap);
+                    square = new Square(canvas, i * posGap, j * posGap, new Coord(i,j));
                 }
             }
         }

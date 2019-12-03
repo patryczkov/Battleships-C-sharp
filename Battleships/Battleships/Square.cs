@@ -11,7 +11,7 @@ namespace Battleships
 
         public int posX, posY, width, height;
 
-        public Square(Canvas canvas, int posX, int posY)
+        public Square(Canvas canvas, int posX, int posY, Coord coord)
         {
             SolidColorBrush color = new SolidColorBrush();
             color.Color = Color.FromRgb(255, 255, 255);
