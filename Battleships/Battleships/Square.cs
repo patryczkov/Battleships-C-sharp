@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -27,7 +28,14 @@ namespace Battleships
             Canvas.SetLeft(rectangle, posX);
             Canvas.SetTop(rectangle, posY);
 
+            rectangle.MouseLeftButtonDown += OnRectangleMouseLeftButtonDown;
+
             canvas.Children.Add(rectangle);
+        }
+
+        void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            rectangle.Fill = Brushes.Black;
         }
     }
 }

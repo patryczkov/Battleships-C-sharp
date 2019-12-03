@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -26,10 +15,11 @@ namespace Battleships
         {
             InitializeComponent();
 
-            CreateBoard();
+            CreateBoard(firstPlayerBoard);
+            CreateBoard(secondPlayerBoard);
         }
 
-        private void CreateBoard()
+        private void CreateBoard(Canvas canvas)
         {
             int height = 10;
             int width = 10;
@@ -40,16 +30,7 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    square = new Square(firstPlayerBoard, i * posGap, j * posGap);
-                }
-            }
-
-            // second player board
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    square = new Square(secondPlayerBoard, i * posGap, j * posGap);
+                    square = new Square(canvas, i * posGap, j * posGap);
                 }
             }
         }
