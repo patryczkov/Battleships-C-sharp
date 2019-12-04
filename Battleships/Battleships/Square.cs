@@ -19,14 +19,13 @@ namespace Battleships
             SolidColorBrush color = new SolidColorBrush();
             color.Color = Color.FromRgb(255, 255, 255);
             rectangle.Fill = color;
+
             rectangle.Stroke = Brushes.Black;
+
             width = 50;
             height = 50;
             rectangle.Width = width;
             rectangle.Height = height;
-
-            isHit = false;
-            isMiss = false;
 
             this.posX = posX;
             this.posY = posY;
@@ -50,8 +49,17 @@ namespace Battleships
             }
         }
 
-        private string CheckTypeOfSquare()
+        public string CheckTypeOfSquare()
         {
+            if (isHit)
+            {
+                rectangle.Fill = Brushes.Red;
+            }
+            else
+            {
+                rectangle.Fill = Brushes.Blue;
+            }
+
             if (isHit)
                 return "hit";
             return "miss";

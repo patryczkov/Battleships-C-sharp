@@ -15,7 +15,7 @@ namespace Battleships
             IsDefeated = isDefeated;
         }
 
-        public abstract void Shoot();
+        public abstract void Shoot(Board playerBoard);
 
         public abstract void WinGame();
     }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -9,21 +10,24 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
+        Board boardOne;
+        Board boardTwo;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            Board boardOne = new Board(firstPlayerBoard);
-            Board boardTwo = new Board(secondPlayerBoard);
+            boardOne = new Board(firstPlayerBoard);
+            boardTwo = new Board(secondPlayerBoard);
 
             HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
 
-            int listSize = boardOne.SquareList.Count;
-            System.Console.WriteLine(listSize);
+            cpu.Shoot(boardOne);
+            cpu.Shoot(boardOne);
+            cpu.Shoot(boardOne);
+            cpu.Shoot(boardOne);
 
-            boardOne.SquareList[0].isHit = true;
-            boardTwo.SquareList[0].isHit = true;
         }
     }
 }

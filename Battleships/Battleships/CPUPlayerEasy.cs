@@ -9,13 +9,17 @@ namespace Battleships
     class CPUPlayerEasy : Player
     {
         Random random = new Random();
+
         public CPUPlayerEasy(Board playerBoard, string playerName, bool isDefeated = false) : base(playerBoard, playerName, isDefeated)
         {
         }
 
-        public override void Shoot()
+        public override void Shoot(Board playerBoard)
         {
-            int shootXY = random.Next(0, 99);
+            int shootSquare = random.Next(0, 99);
+            Square square = playerBoard.SquareList[shootSquare];
+            square.isHit = true;
+            square.CheckTypeOfSquare();
         }
 
         public override void WinGame()

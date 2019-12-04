@@ -11,7 +11,7 @@ namespace Battleships
         {
         }
 
-        public override void Shoot()
+        public override void Shoot(Board playerBoard)
         {
             throw new NotImplementedException();
         }
