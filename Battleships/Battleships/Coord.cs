@@ -14,12 +14,15 @@ namespace Battleships
         public bool IsOccupied { get; set; }
         public bool IsHit { get; set; }
 
-        public Coord(int xAxis, int yAxis, bool isOccupied = false, bool isHit = false)
+        public bool IsShip { get; set; }
+
+        public Coord(int xAxis, int yAxis, bool isOccupied = false, bool isHit = false, bool isShip = false)
         {
             XAxis = xAxis;
             YAxis = yAxis;
             IsOccupied = isOccupied;
             IsHit = isHit;
+            IsShip = isShip;
         }
     }
 }
