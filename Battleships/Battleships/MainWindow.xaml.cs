@@ -13,8 +13,11 @@ namespace Battleships
         {
             InitializeComponent();
 
-            new Board(firstPlayerBoard);
-            new Board(secondPlayerBoard);
+            Board board = new Board(firstPlayerBoard);
+            Board board2 = new Board(secondPlayerBoard);
+            int kutas = board.SquareList.Count;
+            System.Console.WriteLine(kutas);
+
         }
 
 

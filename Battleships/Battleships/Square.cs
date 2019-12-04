@@ -1,15 +1,17 @@
-﻿using System.Windows.Controls;
+﻿using Battleships.model.ships;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Battleships
 {
-    class Square
+    public class Square
     {
         Rectangle rectangle = new Rectangle();
 
         public int posX, posY, width, height;
+        public Coord Coord { get; set; }
 
         public Square(Canvas canvas, int posX, int posY, Coord coord)
         {
@@ -36,6 +38,10 @@ namespace Battleships
         void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             rectangle.Fill = Brushes.Black;
+        }
+        void OnRectangleLeftMouseClickPlaceShip(object sender, MouseButtonEventArgs e)
+        {
+            new AircraftCarrier(this.Coord);
         }
     }
 }

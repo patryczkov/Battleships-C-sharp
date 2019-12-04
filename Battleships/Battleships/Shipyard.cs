@@ -8,5 +8,12 @@ namespace Battleships
 {
     class Shipyard
     {
+        public void CreateShip(int lenght)
+        {
+            if(lenght == 1)
+            {
+               
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Battleships
 {
-    class Coord
+    public class Coord
     {
 
         public int XAxis { get; set; }
