@@ -13,10 +13,11 @@ namespace Battleships
         {
             InitializeComponent();
 
-            new Board(firstPlayerBoard);
-            new Board(secondPlayerBoard);
+            Board boardOne = new Board(firstPlayerBoard);
+            Board boardTwo = new Board(secondPlayerBoard);
+
+            new HumanPlayer(boardOne, "Player", false);
+            new CPUPlayerEasy(boardTwo, "Computer", false);
         }
-
-
     }
 }

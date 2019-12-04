@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -18,9 +14,9 @@ namespace Battleships
             PlayerName = playerName;
             IsDefeated = isDefeated;
         }
-        public abstract void MarkShot();
+
+        public abstract void Shoot();
+
         public abstract void WinGame();
-       
-      
     }
 }

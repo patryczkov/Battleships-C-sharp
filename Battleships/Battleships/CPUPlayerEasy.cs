@@ -12,7 +12,7 @@ namespace Battleships
         {
         }
 
-        public override void MarkShot()
+        public override void Shoot()
         {
             throw new NotImplementedException();
         }

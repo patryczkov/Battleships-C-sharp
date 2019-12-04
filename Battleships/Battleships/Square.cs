@@ -11,6 +11,9 @@ namespace Battleships
 
         public int posX, posY, width, height;
 
+        public bool isHit;
+        public bool isMiss;
+
         public Square(Canvas canvas, int posX, int posY, Coord coord)
         {
             SolidColorBrush color = new SolidColorBrush();
@@ -21,6 +24,9 @@ namespace Battleships
             height = 50;
             rectangle.Width = width;
             rectangle.Height = height;
+
+            isHit = false;
+            isMiss = false;
 
             this.posX = posX;
             this.posY = posY;
@@ -35,7 +41,15 @@ namespace Battleships
 
         void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            rectangle.Fill = Brushes.Black;
+            CheckTypeOfSquare();
+        }
+
+        void CheckTypeOfSquare()
+        {
+            if (isMiss)
+                rectangle.Fill = Brushes.Blue;
+            if(isHit)
+                rectangle.Fill = Brushes.Red;
         }
     }
 }
