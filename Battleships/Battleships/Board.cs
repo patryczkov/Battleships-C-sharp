@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace Battleships
@@ -6,6 +7,8 @@ namespace Battleships
     public class Board
     {
         private Square _square;
+        public List<Square> SquareList = new List<Square>();
+
         public Board(Canvas canvas)
         {
             int height = 10;
@@ -17,7 +20,8 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    _square = new Square(canvas, i * posGap, j * posGap, new Coord(i, j));
+                    _square = new Square(canvas, i * posGap, j * posGap);
+                    SquareList.Add(_square);
                 }
             }
         }

@@ -8,13 +8,14 @@ namespace Battleships
 {
     class CPUPlayerEasy : Player
     {
+        Random random = new Random();
         public CPUPlayerEasy(Board playerBoard, string playerName, bool isDefeated = false) : base(playerBoard, playerName, isDefeated)
         {
         }
 
         public override void Shoot()
         {
-            throw new NotImplementedException();
+            int shootXY = random.Next(0, 99);
         }
 
         public override void WinGame()

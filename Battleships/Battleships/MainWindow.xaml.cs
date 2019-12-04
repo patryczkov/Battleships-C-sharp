@@ -16,8 +16,14 @@ namespace Battleships
             Board boardOne = new Board(firstPlayerBoard);
             Board boardTwo = new Board(secondPlayerBoard);
 
-            new HumanPlayer(boardOne, "Player", false);
-            new CPUPlayerEasy(boardTwo, "Computer", false);
+            HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
+            CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
+
+            int listSize = boardOne.SquareList.Count;
+            System.Console.WriteLine(listSize);
+
+            boardOne.SquareList[0].isHit = true;
+            boardTwo.SquareList[0].isHit = true;
         }
     }
 }

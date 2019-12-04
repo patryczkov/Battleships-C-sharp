@@ -56,7 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Board.cs" />
-    <Compile Include="Coord.cs" />
     <Compile Include="CPUPlayerEasy.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="Square.cs" />

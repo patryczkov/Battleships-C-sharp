@@ -5,16 +5,16 @@ using System.Windows.Shapes;
 
 namespace Battleships
 {
-    class Square
+    public class Square
     {
         Rectangle rectangle = new Rectangle();
 
         public int posX, posY, width, height;
 
-        public bool isHit;
-        public bool isMiss;
+        public bool isHit { get; set; }
+        public bool isMiss { get; set; }
 
-        public Square(Canvas canvas, int posX, int posY, Coord coord)
+        public Square(Canvas canvas, int posX, int posY)
         {
             SolidColorBrush color = new SolidColorBrush();
             color.Color = Color.FromRgb(255, 255, 255);
@@ -39,17 +39,22 @@ namespace Battleships
             canvas.Children.Add(rectangle);
         }
 
-        void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            CheckTypeOfSquare();
+            if (CheckTypeOfSquare().Equals("hit"))
+            {
+                rectangle.Fill = Brushes.Red;
+            } else
+            {
+                rectangle.Fill = Brushes.Blue;
+            }
         }
 
-        void CheckTypeOfSquare()
+        private string CheckTypeOfSquare()
         {
-            if (isMiss)
-                rectangle.Fill = Brushes.Blue;
-            if(isHit)
-                rectangle.Fill = Brushes.Red;
+            if (isHit)
+                return "hit";
+            return "miss";
         }
     }
 }
