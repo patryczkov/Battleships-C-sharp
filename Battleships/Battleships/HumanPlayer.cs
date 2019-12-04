@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -9,11 +6,12 @@ namespace Battleships
     {
         public HumanPlayer(Board playerBoard, string playerName, bool isDefeated = false) : base(playerBoard, playerName, isDefeated)
         {
+
         }
 
         public override void Shoot(Board playerBoard)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void WinGame()

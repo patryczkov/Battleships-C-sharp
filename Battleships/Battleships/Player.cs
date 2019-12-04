@@ -1,5 +1,4 @@
-﻿using System.Windows.Shapes;
-
+﻿
 namespace Battleships
 {
    public abstract class Player

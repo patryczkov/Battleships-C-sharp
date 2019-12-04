@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -10,24 +9,18 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
-        Board boardOne;
-        Board boardTwo;
-
+        public static GameManager gameManager;
         public MainWindow()
         {
             InitializeComponent();
 
-            boardOne = new Board(firstPlayerBoard);
-            boardTwo = new Board(secondPlayerBoard);
+            Board boardOne = new Board(firstPlayerBoard);
+            Board boardTwo = new Board(secondPlayerBoard);
 
             HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
 
-            cpu.Shoot(boardOne);
-            cpu.Shoot(boardOne);
-            cpu.Shoot(boardOne);
-            cpu.Shoot(boardOne);
-
+            gameManager = new GameManager(boardOne, boardTwo, player, cpu);
         }
     }
 }

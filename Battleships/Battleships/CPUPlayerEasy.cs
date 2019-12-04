@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Battleships
 {
-    class CPUPlayerEasy : Player
+    public class CPUPlayerEasy : Player
     {
         Random random = new Random();
 
@@ -20,6 +16,9 @@ namespace Battleships
             Square square = playerBoard.SquareList[shootSquare];
             square.isHit = true;
             square.CheckTypeOfSquare();
+            Console.WriteLine("CpuShoot");
+            GameManager.cpuTurn = false;
+            GameManager.playerTurn = true;
         }
 
         public override void WinGame()

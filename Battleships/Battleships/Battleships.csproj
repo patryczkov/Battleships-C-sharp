@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Board.cs" />
     <Compile Include="CPUPlayerEasy.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="Square.cs" />
     <Page Include="MainWindow.xaml">

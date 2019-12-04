@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -20,11 +21,10 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    _square = new Square(canvas, i * posGap, j * posGap);
+                    _square = new Square(canvas, i * posGap, j * posGap, i * j);
                     SquareList.Add(_square);
                 }
             }
         }
-
     }
 }
