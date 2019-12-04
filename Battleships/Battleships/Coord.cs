@@ -8,21 +8,13 @@ namespace Battleships
 {
     public class Coord
     {
+        public int XAxis { get; }
+        public int YAxis { get; }
 
-        public int XAxis { get; set; }
-        public int YAxis { get; set; }
-        public bool IsOccupied { get; set; }
-        public bool IsHit { get; set; }
-
-        public bool IsShip { get; set; }
-
-        public Coord(int xAxis, int yAxis, bool isOccupied = false, bool isHit = false, bool isShip = false)
+        public Coord(int xAxis, int yAxis)
         {
             XAxis = xAxis;
             YAxis = yAxis;
-            IsOccupied = isOccupied;
-            IsHit = isHit;
-            IsShip = isShip;
         }
     }
 }

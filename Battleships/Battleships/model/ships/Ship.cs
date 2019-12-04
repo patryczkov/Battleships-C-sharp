@@ -11,16 +11,16 @@ namespace Battleships
 
         public string ShipTypeName { get; set; }
         public int ShipLenght { get; set; }
-        public Coord FirstShipPart { get; set; }//?
-        public bool IsDestroyed { get; set; }
+        public Board Board { get; set; }//?
+        public bool IsVertical { get; set; }
 
-        public Ship(Coord firstShipPart, bool isDestroyed = false)
+        public Ship(Board board, int firstPartId, bool isVertical)
         {
-            FirstShipPart = firstShipPart;
-            IsDestroyed = isDestroyed;
+            Board = board;
+            IsVertical = isVertical;
 
         }
-        public abstract bool CheckIfShipIsDestroyed(List<Coord> ShipParts);
-        public abstract List<Coord> BuildShip();
+        public abstract bool CheckIfShipIsDestroyed(List<Square> ShipParts);
+        public abstract void BuildShip(Board board, int firstPartIndex, bool isVertical);
     }
 }

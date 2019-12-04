@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battleships.model.ships;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,59 @@ namespace Battleships
 {
     class Shipyard
     {
-        public void CreateShip(int lenght)
+        private Board _board;
+
+        public Shipyard(Board board)
         {
-            if(lenght == 1)
+            _board = board;
+        }
+        public void CreateShip(int shipSize, int id, bool isVertical)
+        {
+            if (shipSize == 5 && isVertical)
             {
-               
+
+                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
+                {
+                    new AircraftCarrier(_board, id, isVertical);
+                }
+                Exit();
             }
+            else if (shipSize == 5 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new AircraftCarrier(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+           
+            else
+            {
+                Exit();
+            }
+        }
+        private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id)
+        {
+            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].Coord.XAxis + shipSize < 9)
+            {
+                Console.WriteLine(_board.SquareList[id].Coord.XAxis);
+                return true;
+            }
+            return false;
+        }
+        private bool CheckIfShipAbleToDeployVerticaly(int shipSize, int id)
+        {
+            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].Coord.YAxis + shipSize < 9)
+            {
+                return true;
+            }
+            return false;
+        }
+        private void Exit()
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

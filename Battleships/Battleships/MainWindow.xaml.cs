@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Battleships.model.ships;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -15,8 +17,14 @@ namespace Battleships
 
             Board board = new Board(firstPlayerBoard);
             Board board2 = new Board(secondPlayerBoard);
-            int kutas = board.SquareList.Count;
-            System.Console.WriteLine(kutas);
+            Shipyard shipyard = new Shipyard(board);
+            int shipSize = 5;
+            int id = 80;
+            shipyard.CreateShip(shipSize, id, true);
+
+
+
+
 
         }
 
