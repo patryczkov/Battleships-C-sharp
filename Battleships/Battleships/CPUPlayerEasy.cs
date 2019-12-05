@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Battleships
 {
-    class CPUPlayerEasy : Player
+    public class CPUPlayerEasy : Player
     {
+        Random random = new Random();
+
         public CPUPlayerEasy(Board playerBoard, string playerName, bool isDefeated = false) : base(playerBoard, playerName, isDefeated)
         {
         }
 
-        public override void MarkShot()
+        public override void Shoot(Board playerBoard)
         {
-            throw new NotImplementedException();
+            int shootSquare = random.Next(0, 99);
+            Square square = playerBoard.SquareList[shootSquare];
+            square.isMiss = true;
+            square.CheckTypeOfSquare();
+            Console.WriteLine("CpuShoot");
+            GameManager.cpuTurn = false;
+            GameManager.playerTurn = true;
+            MainWindow.TurnTextBlock.Text = "<== Turn";
         }
 
         public override void WinGame()

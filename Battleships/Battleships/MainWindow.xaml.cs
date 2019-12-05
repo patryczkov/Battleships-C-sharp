@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -11,14 +12,18 @@ namespace Battleships
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static GameManager gameManager;
+        public static TextBlock TurnTextBlock { get; set; }
         public MainWindow()
         {
 
             InitializeComponent();
 
-            Board board = new Board(firstPlayerBoard);
-            Board board2 = new Board(secondPlayerBoard);
+            Board boardOne = new Board(firstPlayerBoard, true);
+            Board boardTwo = new Board(secondPlayerBoard, false);
+
             Shipyard shipyard = new Shipyard(board);
+
             //for sake of debug, need to change it!
             int shipSize = 5;
             shipyard.CreateShip(shipSize, RandomID(), RandomAlligment());
@@ -31,9 +36,12 @@ namespace Battleships
             
             int shipSize4 = 2;
             shipyard.CreateShip(shipSize4, RandomID(), RandomAlligment());
-            
 
+            HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
+            CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
 
+            TurnTextBlock = turnTextBlock;
+            gameManager = new GameManager(boardOne, boardTwo, player, cpu);
         }
 
         public static bool RandomAlligment()

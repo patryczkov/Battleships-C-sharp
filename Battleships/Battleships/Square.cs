@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -16,22 +17,25 @@ namespace Battleships
         public bool isMiss { get; set; }
         public bool IsShip { get; set; }
         public bool IsOccupied { get; set; }
+        public bool isPlayer { get; set; }
         public Canvas Canvas { get; set; }
-  
+
         public Rectangle Rectangle { get => rectangle; set => rectangle = value; }
 
         public bool Isclicked { get; set; }
 
-        public Square(Canvas canvas, int posX, int posY, Coord coord, int id)
+        public Square(Canvas canvas, int posX, int posY, Coord coord, int id, bool isPlayer)
         {
             SolidColorBrush color = new SolidColorBrush();
             color.Color = Color.FromRgb(255, 255, 255);
             Rectangle = new Rectangle();
-            
+
             Rectangle.Fill = color;
 
             Rectangle.Stroke = Brushes.Black;
             IsOccupied = false;
+
+            this.isPlayer = isPlayer;
 
             width = 50;
             height = 50;
@@ -43,15 +47,15 @@ namespace Battleships
             this.Coord = coord;
             Label label = new Label();
             label.Content = id;
-            
 
             Canvas.SetLeft(Rectangle, posX);
             Canvas.SetTop(Rectangle, posY);
             Canvas.SetLeft(label, posX);
             Canvas.SetTop(label, posY);
 
-            Rectangle.MouseLeftButtonDown += OnRectangleMouseLeftButtonDown;
-            
+            if (!isPlayer)
+                rectangle.MouseLeftButtonDown += OnMouseDown;
+
             canvas.Children.Add(Rectangle);
             canvas.Children.Add(label);
         }
@@ -77,7 +81,21 @@ namespace Battleships
             }
         }
 
-        public string CheckTypeOfSquare()
+        public void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (GameManager.playerTurn)
+            {
+                Console.WriteLine("PlayerShoot");
+                isMiss = true;
+                CheckTypeOfSquare();
+                GameManager.cpuTurn = true;
+                GameManager.playerTurn = false;
+                MainWindow.TurnTextBlock.Text = "Turn ==>";
+                MainWindow.gameManager.HandleTurns();
+            }
+        }
+
+        public void CheckTypeOfSquare()
         {
             if (isHit)
             {
@@ -99,8 +117,6 @@ namespace Battleships
                 Rectangle.Fill = Brushes.Blue;
                 return "miss";
             }
-
-
         }
     }
 }
