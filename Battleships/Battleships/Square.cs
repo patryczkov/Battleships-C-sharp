@@ -31,6 +31,7 @@ namespace Battleships
             Rectangle.Fill = color;
 
             Rectangle.Stroke = Brushes.Black;
+            IsOccupied = false;
 
             width = 50;
             height = 50;
@@ -66,6 +67,10 @@ namespace Battleships
             {
                 Rectangle.Fill = Brushes.Green;
             }
+            else if (CheckTypeOfSquare().Equals("occupied"))
+            {
+                Rectangle.Fill = Brushes.Yellow;
+            }
             else
             {
                 Rectangle.Fill = Brushes.Blue;
@@ -83,6 +88,11 @@ namespace Battleships
             {
                 Rectangle.Fill = Brushes.Green;
                 return "ship";
+            }
+            else if (IsOccupied)
+            {
+                Rectangle.Fill = Brushes.Yellow;
+                return "occupied";
             }
             else
             {

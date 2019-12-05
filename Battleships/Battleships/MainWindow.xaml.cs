@@ -28,7 +28,7 @@ namespace Battleships
 
             int shipSize3 = 3;
             shipyard.CreateShip(shipSize3, RandomID(), RandomAlligment());
-
+            
             int shipSize4 = 2;
             shipyard.CreateShip(shipSize4, RandomID(), RandomAlligment());
             
@@ -45,7 +45,14 @@ namespace Battleships
         public static int RandomID()
         {
             Random random = new Random();
+            return random.Next(9, 88);
+        }
+        /*
+        public static int RandomID()
+        {
+            Random random = new Random();
             return random.Next(0, 99);
         }
+        */
     }
 }

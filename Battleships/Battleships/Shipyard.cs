@@ -12,7 +12,7 @@ namespace Battleships
     class Shipyard
     {
         private Board _board;
-        private List<int> shipList = new List<int>() { 0, 1, 2, 3};
+        private List<int> shipList = new List<int>() { 0, 1, 2, 3 };
 
         public Shipyard(Board board)
         {
@@ -51,7 +51,7 @@ namespace Battleships
                 }
                 else CreateShip(shipSize, MainWindow.RandomID(), MainWindow.RandomAlligment());
             }
-           
+
         }
 
         private bool CheckPosition(int shipSize, int id, bool isVertical)
@@ -61,20 +61,36 @@ namespace Battleships
 
         private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id)
         {
-            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false && _board.SquareList[id].Coord.XAxis + shipSize < 9)
+            List<int> xdList = new List<int>();
+            for (int i = 0; i < shipSize; i++)
             {
-                Console.WriteLine("horizonal");
-                return true;
+                if (_board.SquareList[id].Coord.XAxis + shipSize < 9 && _board.SquareList[id + i].IsOccupied == false && _board.SquareList[id + i].IsShip == false)
+                {
+                    Console.WriteLine("horizonal");
+                    Console.WriteLine("truehori");
+                    xdList.Add(i);
+                    if (xdList.Count == shipSize) return true;
+
+                }
             }
+            Console.WriteLine("falsehori");
             return false;
         }
         private bool CheckIfShipAbleToDeployVerticaly(int shipSize, int id)
         {
-            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false && _board.SquareList[id].Coord.YAxis + shipSize < 9)
+            List<int> xdList = new List<int>();
+            for (int i = 0; i < shipSize; i++)
             {
-                Console.WriteLine("vertical");
-                return true;
+                if (_board.SquareList[id].Coord.YAxis + shipSize < 9 && _board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false)
+                {
+                    Console.WriteLine("vertical");
+                    Console.WriteLine("truever");
+                    xdList.Add(i);
+                    if (xdList.Count == shipSize) return true;
+                }
+
             }
+            Console.WriteLine("falsever");
             return false;
         }
         private void Exit()
