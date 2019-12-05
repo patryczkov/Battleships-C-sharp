@@ -19,6 +19,7 @@ namespace Battleships
             Console.WriteLine("CpuShoot");
             GameManager.cpuTurn = false;
             GameManager.playerTurn = true;
+            MainWindow.TurnTextBlock.Text = "<== Turn";
         }
 
         public override void WinGame()

@@ -52,6 +52,7 @@ namespace Battleships
                 CheckTypeOfSquare();
                 GameManager.cpuTurn = true;
                 GameManager.playerTurn = false;
+                MainWindow.TurnTextBlock.Text = "Turn ==>";
                 MainWindow.gameManager.HandleTurns();
             }
         }

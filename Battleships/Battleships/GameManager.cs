@@ -19,7 +19,16 @@ namespace Battleships
             this.player = player;
             this.cpu = cpu;
 
-            playerTurn = CoinRoll().Equals(0);
+            if(CoinRoll().Equals(0))
+            {
+                playerTurn = true;
+                MainWindow.TurnTextBlock.Text = "<== Turn";
+            } else
+            {
+                playerTurn = false;
+                MainWindow.TurnTextBlock.Text = "Turn ==>";
+            }
+            HandleTurns();
         }
 
         public void HandleTurns()
@@ -31,7 +40,7 @@ namespace Battleships
         private int CoinRoll()
         {
             Random random = new Random();
-            return random.Next(0, 1);
+            return random.Next(0, 2);
         }
     }
 }
