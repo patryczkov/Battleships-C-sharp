@@ -13,7 +13,7 @@ namespace Battleships
     {
         public MainWindow()
         {
-            
+
             InitializeComponent();
 
             Board board = new Board(firstPlayerBoard);
@@ -21,27 +21,31 @@ namespace Battleships
             Shipyard shipyard = new Shipyard(board);
             //for sake of debug, need to change it!
             int shipSize = 5;
-            int id = 0;
-            shipyard.CreateShip(shipSize, id, true);
-
+            shipyard.CreateShip(shipSize, RandomID(), RandomAlligment());
+            
             int shipSize2 = 4;
-            int id2 = 74;
-            shipyard.CreateShip(shipSize2, id2, false);
+            shipyard.CreateShip(shipSize2, RandomID(), RandomAlligment());
 
             int shipSize3 = 3;
-            int id3 = 13;
-            shipyard.CreateShip(shipSize3, id3, true);
-            
+            shipyard.CreateShip(shipSize3, RandomID(), RandomAlligment());
+
             int shipSize4 = 2;
-            int id4 = 80;
-            shipyard.CreateShip(shipSize4, id4, false);
-
-
-
+            shipyard.CreateShip(shipSize4, RandomID(), RandomAlligment());
+            
 
 
         }
 
-
+        public static bool RandomAlligment()
+        {
+            Random randomAlligment = new Random();
+            int randomInt = randomAlligment.Next(0, 2);
+            return randomInt == 0;
+        }
+        public static int RandomID()
+        {
+            Random random = new Random();
+            return random.Next(0, 99);
+        }
     }
 }

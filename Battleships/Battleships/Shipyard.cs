@@ -1,15 +1,18 @@
 ﻿using Battleships.model.ships;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Battleships
 {
+
     class Shipyard
     {
         private Board _board;
+        private List<int> shipList = new List<int>() { 0, 1, 2, 3};
 
         public Shipyard(Board board)
         {
@@ -17,101 +20,59 @@ namespace Battleships
         }
         public void CreateShip(int shipSize, int id, bool isVertical)
         {
-            if (shipSize == 5 && isVertical)
+            Console.WriteLine("Create ship");
+            if (shipList.Count != 0)
             {
-
-                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
+                if (CheckPosition(shipSize, id, isVertical))
                 {
-                    new AircraftCarrier(_board, id, isVertical);
+                    if (shipSize == 5)
+                    {
+                        new AircraftCarrier(_board, id, isVertical);
+                        shipList.Remove(0);
+                    }
+
+                    if (shipSize == 4)
+                    {
+                        new Destroyer(_board, id, isVertical);
+                        shipList.Remove(0);
+                    }
+
+                    if (shipSize == 3)
+                    {
+                        new Cruiser(_board, id, isVertical);
+                        shipList.Remove(0);
+                    }
+
+                    if (shipSize == 2)
+                    {
+                        new Submarine(_board, id, isVertical);
+                        shipList.Remove(0);
+                    }
                 }
-               // Exit();
+                else CreateShip(shipSize, MainWindow.RandomID(), MainWindow.RandomAlligment());
             }
-            else if (shipSize == 5 && !isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
-                {
-                    new AircraftCarrier(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 4 && isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
-                {
-                    new  Destroyer(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 4 && !isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
-                {
-                    new Destroyer(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 3 && isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
-                {
-                    new Cruiser(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 3 && !isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
-                {
-                    new  Cruiser(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 2 && isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
-                {
-                    new Submarine(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-            else if (shipSize == 2 && !isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
-                {
-                    new Submarine(_board, id, isVertical);
-                }
-               // Exit();
-
-            }
-
            
         }
+
+        private bool CheckPosition(int shipSize, int id, bool isVertical)
+        {
+            return isVertical ? CheckIfShipAbleToDeployVerticaly(shipSize, id) : CheckIfShipAbleToDeployHorizontaly(shipSize, id);
+        }
+
         private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id)
         {
-            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].Coord.XAxis + shipSize < 9)
+            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false && _board.SquareList[id].Coord.XAxis + shipSize < 9)
             {
-                Console.WriteLine(_board.SquareList[id].Coord.XAxis);
+                Console.WriteLine("horizonal");
                 return true;
             }
             return false;
         }
         private bool CheckIfShipAbleToDeployVerticaly(int shipSize, int id)
         {
-            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].Coord.YAxis + shipSize < 9)
+            if (_board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false && _board.SquareList[id].Coord.YAxis + shipSize < 9)
             {
+                Console.WriteLine("vertical");
                 return true;
             }
             return false;

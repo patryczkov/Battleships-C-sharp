@@ -13,7 +13,9 @@ namespace Battleships.model.ships
         {
             ShipLenght = 5;
             ShipTypeName = "AircraftCarrier";
+            Console.WriteLine(ShipTypeName);
             BuildShip(board, firstPartIndex, isVertical);
+            Console.WriteLine(ShipTypeName + "build");
         }
 
         public override void BuildShip(Board board, int firstPartIndex, bool isVertical)
@@ -36,6 +38,7 @@ namespace Battleships.model.ships
         private void ChangeSquaresIntoShipPartsAndAgregate(Board board, int i, int firstPartIndex)
         {
             board.SquareList[firstPartIndex + i].IsShip = true;
+            board.SquareList[firstPartIndex + i].CheckTypeOfSquare();
             listShipSquares.Add(board.SquareList[firstPartIndex + i]);
         }
 

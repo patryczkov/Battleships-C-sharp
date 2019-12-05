@@ -28,17 +28,11 @@ namespace Battleships
 
                 }
             }
-            //MakeSquareClicable();
+            
         }
 
         public List<Square> SquareList { get => _squareList; set => _squareList = value; }
-        private void MakeSquareClicable()
-        {
-            foreach (var square in _squareList)
-            {
-                square.Rectangle.MouseLeftButtonDown += square.OnRectangleMouseLeftButtonDown;
-            }
-        }
+        
 
 
     }
