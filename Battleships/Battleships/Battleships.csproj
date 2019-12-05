@@ -55,18 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Board.cs" />
+    <Compile Include="model\Board.cs" />
     <Compile Include="model\Coord.cs" />
     <Compile Include="model\player\CPUPlayerEasy.cs" />
-    <Compile Include="GameManager.cs" />
+    <Compile Include="model\GameManager.cs" />
     <Compile Include="model\player\HumanPlayer.cs" />
-    <Compile Include="model\ships\AircraftCarrier.cs" />
-    <Compile Include="model\ships\Cruiser.cs" />
-    <Compile Include="model\ships\Destroyer.cs" />
-    <Compile Include="model\ships\Ship.cs" />
-    <Compile Include="model\ships\Submarine.cs" />
+    <Compile Include="model\ship\AircraftCarrier.cs" />
+    <Compile Include="model\ship\Cruiser.cs" />
+    <Compile Include="model\ship\Destroyer.cs" />
+    <Compile Include="model\ship\Ship.cs" />
+    <Compile Include="model\ship\Submarine.cs" />
     <Compile Include="model\Win.cs" />
-    <Compile Include="Shipyard.cs" />
+    <Compile Include="model\Shipyard.cs" />
     <Compile Include="model\Square.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
