@@ -14,7 +14,7 @@ namespace Battleships
         {
             int shootSquare = random.Next(0, 99);
             Square square = playerBoard.SquareList[shootSquare];
-            square.isHit = true;
+            square.isMiss = true;
             square.CheckTypeOfSquare();
             Console.WriteLine("CpuShoot");
             GameManager.cpuTurn = false;

@@ -10,7 +10,7 @@ namespace Battleships
         private Square _square;
         public List<Square> SquareList = new List<Square>();
 
-        public Board(Canvas canvas)
+        public Board(Canvas canvas, bool isPlayer)
         {
             int height = 10;
             int width = 10;
@@ -21,7 +21,7 @@ namespace Battleships
             {
                 for (int j = 0; j < width; j++)
                 {
-                    _square = new Square(canvas, i * posGap, j * posGap, i * j);
+                    _square = new Square(canvas, i * posGap, j * posGap, i * j, isPlayer);
                     SquareList.Add(_square);
                 }
             }

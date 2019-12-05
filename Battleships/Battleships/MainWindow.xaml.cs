@@ -14,8 +14,8 @@ namespace Battleships
         {
             InitializeComponent();
 
-            Board boardOne = new Board(firstPlayerBoard);
-            Board boardTwo = new Board(secondPlayerBoard);
+            Board boardOne = new Board(firstPlayerBoard, true);
+            Board boardTwo = new Board(secondPlayerBoard, false);
 
             HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);

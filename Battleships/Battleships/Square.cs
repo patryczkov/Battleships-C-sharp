@@ -14,14 +14,17 @@ namespace Battleships
 
         public bool isHit { get; set; }
         public bool isMiss { get; set; }
+        public bool isPlayer { get; set; }
+        public bool isShip { get; set; }
 
-        public Square(Canvas canvas, int posX, int posY, int id)
+        public Square(Canvas canvas, int posX, int posY, int id, bool isPlayer)
         {
             SolidColorBrush color = new SolidColorBrush();
             color.Color = Color.FromRgb(255, 255, 255);
             rectangle.Fill = color;
 
             rectangle.Stroke = Brushes.Black;
+            this.isPlayer = isPlayer;
 
             width = 50;
             height = 50;
@@ -34,7 +37,8 @@ namespace Battleships
             Canvas.SetLeft(rectangle, posX);
             Canvas.SetTop(rectangle, posY);
 
-            rectangle.MouseLeftButtonDown += OnMouseDown;
+            if(!isPlayer)
+                rectangle.MouseLeftButtonDown += OnMouseDown;
 
             canvas.Children.Add(rectangle);
         }
@@ -44,7 +48,7 @@ namespace Battleships
             if (GameManager.playerTurn)
             {
                 Console.WriteLine("PlayerShoot");
-                isHit = true;
+                isMiss = true;
                 CheckTypeOfSquare();
                 GameManager.cpuTurn = true;
                 GameManager.playerTurn = false;
@@ -52,18 +56,14 @@ namespace Battleships
             }
         }
 
-        public string CheckTypeOfSquare()
+        public void CheckTypeOfSquare()
         {
             if (isHit)
-            {
                 rectangle.Fill = Brushes.Red;
-                return "hit";
-            }
+            else if (isShip)
+                rectangle.Fill = Brushes.Green;
             else
-            {
                 rectangle.Fill = Brushes.Blue;
-                return "miss";
-            }
         }
     }
 }
