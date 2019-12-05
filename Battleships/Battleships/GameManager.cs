@@ -6,6 +6,8 @@ namespace Battleships
     {
         public static bool playerTurn { get; set; }
         public static bool cpuTurn { get; set; }
+        public static int hitCounterPlayer { get; set; }
+        public static int hitCounterCpu { get; set; }
 
         Board boardOne;
         Board boardTwo;
@@ -31,8 +33,16 @@ namespace Battleships
             HandleTurns();
         }
 
+        private void Win()
+        {
+            Console.WriteLine("win");
+        }
+
         public void HandleTurns()
         {
+            if (hitCounterPlayer >= 14 || hitCounterCpu >= 14)
+                Win();
+
             if (!playerTurn)
                 cpu.Shoot(boardOne);
         }

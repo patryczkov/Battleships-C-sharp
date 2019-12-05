@@ -1,9 +1,6 @@
-﻿using Battleships.model.ships;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Shapes;
 
 namespace Battleships
 {
@@ -22,20 +19,23 @@ namespace Battleships
             Board boardOne = new Board(firstPlayerBoard, true);
             Board boardTwo = new Board(secondPlayerBoard, false);
 
-            Shipyard shipyard = new Shipyard(board);
+            Shipyard shipyardPlayer = new Shipyard(boardOne);
+            Shipyard shipyardCpu = new Shipyard(boardTwo);
 
             //for sake of debug, need to change it!
             int shipSize = 5;
-            shipyard.CreateShip(shipSize, RandomID(), RandomAlligment());
-            
+            shipyardPlayer.CreateShip(shipSize, RandomID(), RandomAlligment());
             int shipSize2 = 4;
-            shipyard.CreateShip(shipSize2, RandomID(), RandomAlligment());
-
+            shipyardPlayer.CreateShip(shipSize2, RandomID(), RandomAlligment());
             int shipSize3 = 3;
-            shipyard.CreateShip(shipSize3, RandomID(), RandomAlligment());
-            
+            shipyardPlayer.CreateShip(shipSize3, RandomID(), RandomAlligment());
             int shipSize4 = 2;
-            shipyard.CreateShip(shipSize4, RandomID(), RandomAlligment());
+            shipyardPlayer.CreateShip(shipSize4, RandomID(), RandomAlligment());            
+            
+            shipyardCpu.CreateShip(shipSize, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(shipSize2, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(shipSize3, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(shipSize4, RandomID(), RandomAlligment());
 
             HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);

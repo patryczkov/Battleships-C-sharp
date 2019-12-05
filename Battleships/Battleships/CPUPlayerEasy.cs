@@ -12,14 +12,29 @@ namespace Battleships
 
         public override void Shoot(Board playerBoard)
         {
-            int shootSquare = random.Next(0, 99);
+            
+            int shootSquare = random.Next(0, 100);
             Square square = playerBoard.SquareList[shootSquare];
-            square.isMiss = true;
-            square.CheckTypeOfSquare();
-            Console.WriteLine("CpuShoot");
-            GameManager.cpuTurn = false;
-            GameManager.playerTurn = true;
-            MainWindow.TurnTextBlock.Text = "<== Turn";
+
+            if (!square.IsClicked)
+            {
+                square.IsClicked = true;
+                if (square.IsShip)
+                {
+                    square.isHit = true;
+                    GameManager.hitCounterCpu += 1;
+                }
+                else
+                    square.isMiss = true;
+
+                square.CheckTypeOfSquare();
+                Console.WriteLine("CpuShoot");
+                GameManager.cpuTurn = false;
+                GameManager.playerTurn = true;
+                MainWindow.TurnTextBlock.Text = "<== Turn";
+            }
+            else
+                Shoot(playerBoard);
         }
 
         public override void WinGame()

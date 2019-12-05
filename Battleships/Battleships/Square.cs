@@ -8,8 +8,6 @@ namespace Battleships
 {
     public class Square
     {
-        Rectangle rectangle;
-
         public int posX, posY, width, height, id;
 
         public Coord Coord { get; private set; }
@@ -17,12 +15,11 @@ namespace Battleships
         public bool isMiss { get; set; }
         public bool IsShip { get; set; }
         public bool IsOccupied { get; set; }
+        public bool IsClicked { get; set; }
         public bool isPlayer { get; set; }
         public Canvas Canvas { get; set; }
 
-        public Rectangle Rectangle { get => rectangle; set => rectangle = value; }
-
-        public bool Isclicked { get; set; }
+        public Rectangle Rectangle { get; set; }
 
         public Square(Canvas canvas, int posX, int posY, Coord coord, int id, bool isPlayer)
         {
@@ -45,49 +42,33 @@ namespace Battleships
             this.posX = posX;
             this.posY = posY;
             this.Coord = coord;
-            Label label = new Label();
-            label.Content = id;
 
             Canvas.SetLeft(Rectangle, posX);
             Canvas.SetTop(Rectangle, posY);
-            Canvas.SetLeft(label, posX);
-            Canvas.SetTop(label, posY);
 
             if (!isPlayer)
-                rectangle.MouseLeftButtonDown += OnMouseDown;
+                Rectangle.MouseLeftButtonDown += OnMouseDown;
 
             canvas.Children.Add(Rectangle);
-            canvas.Children.Add(label);
-        }
-
-        public void OnRectangleMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Isclicked = true;
-            if (CheckTypeOfSquare().Equals("hit"))
-            {
-                Rectangle.Fill = Brushes.Red;
-            }
-            else if (CheckTypeOfSquare().Equals("ship"))
-            {
-                Rectangle.Fill = Brushes.Green;
-            }
-            else if (CheckTypeOfSquare().Equals("occupied"))
-            {
-                Rectangle.Fill = Brushes.Yellow;
-            }
-            else
-            {
-                Rectangle.Fill = Brushes.Blue;
-            }
         }
 
         public void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (GameManager.playerTurn)
+            if (GameManager.playerTurn && !IsClicked)
             {
                 Console.WriteLine("PlayerShoot");
-                isMiss = true;
+                IsClicked = true;
+
+                if (IsShip)
+                {
+                    isHit = true;
+                    GameManager.hitCounterPlayer += 1;
+                }
+                else
+                    isMiss = true;
+
                 CheckTypeOfSquare();
+
                 GameManager.cpuTurn = true;
                 GameManager.playerTurn = false;
                 MainWindow.TurnTextBlock.Text = "Turn ==>";
@@ -97,25 +78,21 @@ namespace Battleships
 
         public void CheckTypeOfSquare()
         {
-            if (isHit)
-            {
-                Rectangle.Fill = Brushes.Red;
-                return "hit";
-            }
-            else if (IsShip)
+            if (IsShip)
             {
                 Rectangle.Fill = Brushes.Green;
-                return "ship";
             }
-            else if (IsOccupied)
+
+            if (IsClicked)
             {
-                Rectangle.Fill = Brushes.Yellow;
-                return "occupied";
-            }
-            else
-            {
-                Rectangle.Fill = Brushes.Blue;
-                return "miss";
+                if (isHit)
+                {
+                    Rectangle.Fill = Brushes.Red;
+                }
+                else if (isMiss)
+                {
+                    Rectangle.Fill = Brushes.Blue;
+                }
             }
         }
     }
