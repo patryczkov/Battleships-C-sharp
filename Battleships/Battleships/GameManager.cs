@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Battleships.model;
+using System;
+using System.Windows.Controls;
 
 namespace Battleships
 {
@@ -9,17 +11,19 @@ namespace Battleships
         public static int hitCounterPlayer { get; set; }
         public static int hitCounterCpu { get; set; }
 
-        Board boardOne;
-        Board boardTwo;
-        HumanPlayer player;
-        CPUPlayerEasy cpu;
+        private Canvas _canvas;
+        private Board _boardOne;
+        private Board _boardTwo;
+        private HumanPlayer _player;
+        private CPUPlayerEasy _cpu;
 
-        public GameManager(Board boardOne, Board boardTwo, HumanPlayer player, CPUPlayerEasy cpu)
+        public GameManager(Canvas canvas, Board boardOne, Board boardTwo, HumanPlayer player, CPUPlayerEasy cpu)
         {
-            this.boardOne = boardOne;
-            this.boardTwo = boardTwo;
-            this.player = player;
-            this.cpu = cpu;
+            this._canvas = canvas;
+            this._boardOne = boardOne;
+            this._boardTwo = boardTwo;
+            this._player = player;
+            this._cpu = cpu;
 
             if(CoinRoll().Equals(0))
             {
@@ -35,7 +39,7 @@ namespace Battleships
 
         private void Win()
         {
-            Console.WriteLine("win");
+            new Win(_canvas);
         }
 
         public void HandleTurns()
@@ -44,7 +48,7 @@ namespace Battleships
                 Win();
 
             if (!playerTurn)
-                cpu.Shoot(boardOne);
+                _cpu.Shoot(_boardOne);
         }
 
         private int CoinRoll()

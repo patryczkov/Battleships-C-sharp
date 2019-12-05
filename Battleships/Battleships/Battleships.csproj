@@ -56,17 +56,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Board.cs" />
-    <Compile Include="Coord.cs" />
-    <Compile Include="CPUPlayerEasy.cs" />
+    <Compile Include="model\Coord.cs" />
+    <Compile Include="model\player\CPUPlayerEasy.cs" />
     <Compile Include="GameManager.cs" />
-    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="model\player\HumanPlayer.cs" />
     <Compile Include="model\ships\AircraftCarrier.cs" />
     <Compile Include="model\ships\Cruiser.cs" />
     <Compile Include="model\ships\Destroyer.cs" />
     <Compile Include="model\ships\Ship.cs" />
     <Compile Include="model\ships\Submarine.cs" />
+    <Compile Include="model\Win.cs" />
     <Compile Include="Shipyard.cs" />
-    <Compile Include="Square.cs" />
+    <Compile Include="model\Square.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,7 +82,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Player.cs" />
+    <Compile Include="model\player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

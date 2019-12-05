@@ -81,7 +81,7 @@ namespace Battleships
             List<int> xdList = new List<int>();
             for (int i = 0; i < shipSize; i++)
             {
-                if (_board.SquareList[id].Coord.YAxis + shipSize < 9 && _board.SquareList[id].IsOccupied == false && _board.SquareList[id].IsShip == false)
+                if (_board.SquareList[id].Coord.YAxis + shipSize < 9 && _board.SquareList[id + i].IsOccupied == false && _board.SquareList[id + i].IsShip == false)
                 {
                     Console.WriteLine("vertical");
                     Console.WriteLine("truever");

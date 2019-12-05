@@ -41,7 +41,7 @@ namespace Battleships
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
 
             TurnTextBlock = turnTextBlock;
-            gameManager = new GameManager(boardOne, boardTwo, player, cpu);
+            gameManager = new GameManager(gameCanvas ,boardOne, boardTwo, player, cpu);
         }
 
         public static bool RandomAlligment()

@@ -8,7 +8,8 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="700" Width="1200">
     <Grid>
-        <Canvas x:Name="firstPlayerBoard" Height="500" Width="500" Margin="50,50,645,114">
+        <Canvas x:Name="gameCanvas" Height="700" Width="1200">
+            <Canvas x:Name="firstPlayerBoard" Height="500" Width="500" Margin="50,50,645,114">
             <Label x:Name="playerOneLabel" Content="Player&#xD;&#xA;" FontSize="40" 
                    Canvas.Left="170" Canvas.Top="500" Height="72" Width="200"/>
         </Canvas>
@@ -23,6 +24,6 @@
         <Label Content="1&#xD;&#xA;2&#xD;&#xA;3&#xD;&#xA;4&#xD;&#xA;5&#xD;&#xA;6&#xD;&#xA;7&#xD;&#xA;8&#xD;&#xA;9&#xD;&#xA;10" Margin="597,54,0,0" Height="554" Width="54" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,5,5,0"/>
         <TextBlock x:Name="turnTextBlock" FontSize="35" HorizontalAlignment="Left" Margin="506,558,0,0" TextWrapping="Wrap" Text="Turn" VerticalAlignment="Top" Height="70" Width="190" TextAlignment="Center"/>
 
-
+        </Canvas>
     </Grid>
 </Window>
