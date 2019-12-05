@@ -8,7 +8,7 @@ namespace Battleships.model.ships
 {
     public class Destroyer : Ship
     {
-        private List<Square> listShipSquares;
+        private List<Square> listShipSquares = new List<Square>();
         public Destroyer(Board board, int firstPartIndex, bool isVertical) : base(board, firstPartIndex, isVertical)
         {
             ShipLenght = 4;

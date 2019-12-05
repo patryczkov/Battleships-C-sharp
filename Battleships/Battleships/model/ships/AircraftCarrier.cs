@@ -8,7 +8,7 @@ namespace Battleships.model.ships
 {
     public class AircraftCarrier : Ship
     {
-        private List<Square> listShipSquares;
+        private List<Square> listShipSquares = new List<Square>();
         public AircraftCarrier(Board board, int firstPartIndex, bool isVertical) : base(board, firstPartIndex, isVertical)
         {
             ShipLenght = 5;

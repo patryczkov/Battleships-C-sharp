@@ -9,8 +9,6 @@ namespace Battleships
     
     public abstract class Ship
     {
-        private List<Square> _shipSquareParts;
-
         public string ShipTypeName { get; set; }
         public int ShipLenght { get; set; }
         public Board Board { get; set; }//?
@@ -23,7 +21,6 @@ namespace Battleships
 
         }
         public abstract bool CheckIfShipIsDestroyed(List<Square> ShipParts);
-        public abstract void ChangeSquaresIntoShipPartsAndAgregate(Board board, int i, int firstPartIndex);
         public abstract void BuildShip(Board board, int firstPartIndex, bool isVertical);
     }
 }

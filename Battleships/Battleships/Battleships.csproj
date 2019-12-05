@@ -60,7 +60,10 @@
     <Compile Include="CPUPlayerEasy.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="model\ships\AircraftCarrier.cs" />
+    <Compile Include="model\ships\Cruiser.cs" />
+    <Compile Include="model\ships\Destroyer.cs" />
     <Compile Include="model\ships\Ship.cs" />
+    <Compile Include="model\ships\Submarine.cs" />
     <Compile Include="Shipyard.cs" />
     <Compile Include="Square.cs" />
     <Page Include="MainWindow.xaml">

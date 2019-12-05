@@ -24,7 +24,7 @@ namespace Battleships
                 {
                     new AircraftCarrier(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
             }
             else if (shipSize == 5 && !isVertical)
             {
@@ -33,17 +33,17 @@ namespace Battleships
                 {
                     new AircraftCarrier(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
 
             }
-            else if (shipSize == 4 && !isVertical)
+            else if (shipSize == 4 && isVertical)
             {
 
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
                 {
                     new  Destroyer(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
 
             }
             else if (shipSize == 4 && !isVertical)
@@ -53,17 +53,17 @@ namespace Battleships
                 {
                     new Destroyer(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
 
             }
-            else if (shipSize == 3 && !isVertical)
+            else if (shipSize == 3 && isVertical)
             {
 
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
                 {
                     new Cruiser(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
 
             }
             else if (shipSize == 3 && !isVertical)
@@ -73,7 +73,17 @@ namespace Battleships
                 {
                     new  Cruiser(_board, id, isVertical);
                 }
-                Exit();
+               // Exit();
+
+            }
+            else if (shipSize == 2 && isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployVerticaly(shipSize, id))
+                {
+                    new Submarine(_board, id, isVertical);
+                }
+               // Exit();
 
             }
             else if (shipSize == 2 && !isVertical)
@@ -83,24 +93,11 @@ namespace Battleships
                 {
                     new Submarine(_board, id, isVertical);
                 }
-                Exit();
-
-            }
-            else if (shipSize == 2 && !isVertical)
-            {
-
-                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
-                {
-                    new Submarine(_board, id, isVertical);
-                }
-                Exit();
+               // Exit();
 
             }
 
-            else
-            {
-                Exit();
-            }
+           
         }
         private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id)
         {
