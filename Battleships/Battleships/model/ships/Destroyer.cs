@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Battleships.model.ships
 {
-    public class AircraftCarrier : Ship
+    public class Destroyer : Ship
     {
         private List<Square> listShipSquares;
-        public AircraftCarrier(Board board, int firstPartIndex, bool isVertical) : base(board, firstPartIndex, isVertical)
+        public Destroyer(Board board, int firstPartIndex, bool isVertical) : base(board, firstPartIndex, isVertical)
         {
-            ShipLenght = 5;
-            ShipTypeName = "AircraftCarrier";
+            ShipLenght = 4;
+            ShipTypeName = "Destroyer";
             BuildShip(board, firstPartIndex, isVertical);
         }
 

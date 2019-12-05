@@ -36,7 +36,67 @@ namespace Battleships
                 Exit();
 
             }
-           
+            else if (shipSize == 4 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new  Destroyer(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+            else if (shipSize == 4 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new Destroyer(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+            else if (shipSize == 3 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new Cruiser(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+            else if (shipSize == 3 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new  Cruiser(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+            else if (shipSize == 2 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new Submarine(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+            else if (shipSize == 2 && !isVertical)
+            {
+
+                if (CheckIfShipAbleToDeployHorizontaly(shipSize, id))
+                {
+                    new Submarine(_board, id, isVertical);
+                }
+                Exit();
+
+            }
+
             else
             {
                 Exit();
