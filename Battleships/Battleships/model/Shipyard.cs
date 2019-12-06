@@ -11,12 +11,13 @@ namespace Battleships
 
     class Shipyard
     {
-        private Board _board;
+        
         private List<int> shipList = new List<int>() { 0, 1, 2, 3 };
+        public Board Board { get; set; }
 
         public Shipyard(Board board)
         {
-            _board = board;
+            Board = board;
         }
         public void CreateShip(int shipSize, int id, bool isVertical)
         {
@@ -27,29 +28,29 @@ namespace Battleships
                 {
                     if (shipSize == 5)
                     {
-                        new AircraftCarrier(_board, id, isVertical);
+                        new AircraftCarrier(Board, id, isVertical);
                         shipList.Remove(0);
                     }
 
                     if (shipSize == 4)
                     {
-                        new Destroyer(_board, id, isVertical);
+                        new Destroyer(Board, id, isVertical);
                         shipList.Remove(0);
                     }
 
                     if (shipSize == 3)
                     {
-                        new Cruiser(_board, id, isVertical);
+                        new Cruiser(Board, id, isVertical);
                         shipList.Remove(0);
                     }
 
                     if (shipSize == 2)
                     {
-                        new Submarine(_board, id, isVertical);
+                        new Submarine(Board, id, isVertical);
                         shipList.Remove(0);
                     }
                 }
-                else CreateShip(shipSize, MainWindow.RandomID(), MainWindow.RandomAlligment());
+                else CreateShip(shipSize, MainWindow.RandomID(), MainWindow.RandomAlligment()); //how to avoid that?
             }
 
         }
@@ -59,17 +60,17 @@ namespace Battleships
             return isVertical ? CheckIfShipAbleToDeployVerticaly(shipSize, id) : CheckIfShipAbleToDeployHorizontaly(shipSize, id);
         }
 
-        private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id)
+        private bool CheckIfShipAbleToDeployHorizontaly(int shipSize, int id) // to nie działa dalej :(
         {
-            List<int> xdList = new List<int>();
+            List<int> tempList = new List<int>();
             for (int i = 0; i < shipSize; i++)
             {
-                if (_board.SquareList[id].Coord.XAxis + shipSize < 9 && _board.SquareList[id + i].IsOccupied == false && _board.SquareList[id + i].IsShip == false)
+                if (Board.SquareList[id].Coord.XAxis + shipSize < 9 && Board.SquareList[id + i].IsShip == false && Board.SquareList[id + i].IsOccupied == false)
                 {
-                    Console.WriteLine("horizonal");
+                    
                     Console.WriteLine("truehori");
-                    xdList.Add(i);
-                    if (xdList.Count == shipSize) return true;
+                    tempList.Add(i);
+                    if (tempList.Count == shipSize) return true;
 
                 }
             }
@@ -78,15 +79,15 @@ namespace Battleships
         }
         private bool CheckIfShipAbleToDeployVerticaly(int shipSize, int id)
         {
-            List<int> xdList = new List<int>();
+            List<int> tempList = new List<int>();
             for (int i = 0; i < shipSize; i++)
             {
-                if (_board.SquareList[id].Coord.YAxis + shipSize < 9 && _board.SquareList[id + i].IsOccupied == false && _board.SquareList[id + i].IsShip == false)
+                if (Board.SquareList[id].Coord.YAxis + shipSize < 9 && Board.SquareList[id + i].IsShip == false && Board.SquareList[id + i].IsOccupied == false)
                 {
-                    Console.WriteLine("vertical");
+                    
                     Console.WriteLine("truever");
-                    xdList.Add(i);
-                    if (xdList.Count == shipSize) return true;
+                    tempList.Add(i);
+                    if (tempList.Count == shipSize) return true;
                 }
 
             }

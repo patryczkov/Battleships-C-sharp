@@ -22,12 +22,16 @@ namespace Battleships
                 for (int horizontal = 0; horizontal < height; horizontal++)
                 {
                     _square = new Square(canvas, horizontal * posGap, vertical * posGap, new Coord(horizontal, vertical),
-                        _squareId = Convert.ToInt32(string.Format("{0}{1}", vertical, horizontal)), isPlayer); //clean it!
+                        _squareId = ConcatenateXAxisNumberWithYAxisNumber(vertical, horizontal), isPlayer); //clean it!
                     SquareList.Add(_square);
                 }
             }
         }
 
+        private int ConcatenateXAxisNumberWithYAxisNumber(int vertical, int horizontal)
+        {
+            return Convert.ToInt32(string.Format("{0}{1}", vertical, horizontal));
+        }
         public List<Square> SquareList { get => _squareList; set => _squareList = value; }
     }
 }

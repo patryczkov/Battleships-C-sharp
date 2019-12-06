@@ -11,6 +11,11 @@ namespace Battleships
     {
         public static GameManager gameManager;
         public static TextBlock TurnTextBlock { get; set; }
+
+        private readonly int AircraftCarrierSize = 5;
+        private readonly int DestroyerSize = 4;
+        private readonly int CruiserSize = 3;
+        private readonly int SubmarineSize = 2;
         public MainWindow()
         {
 
@@ -23,25 +28,22 @@ namespace Battleships
             Shipyard shipyardCpu = new Shipyard(boardTwo);
 
             //for sake of debug, need to change it!
-            int shipSize = 5;
-            shipyardPlayer.CreateShip(shipSize, RandomID(), RandomAlligment());
-            int shipSize2 = 4;
-            shipyardPlayer.CreateShip(shipSize2, RandomID(), RandomAlligment());
-            int shipSize3 = 3;
-            shipyardPlayer.CreateShip(shipSize3, RandomID(), RandomAlligment());
-            int shipSize4 = 2;
-            shipyardPlayer.CreateShip(shipSize4, RandomID(), RandomAlligment());            
-            
-            shipyardCpu.CreateShip(shipSize, RandomID(), RandomAlligment());
-            shipyardCpu.CreateShip(shipSize2, RandomID(), RandomAlligment());
-            shipyardCpu.CreateShip(shipSize3, RandomID(), RandomAlligment());
-            shipyardCpu.CreateShip(shipSize4, RandomID(), RandomAlligment());
+
+            shipyardPlayer.CreateShip(AircraftCarrierSize, RandomID(), RandomAlligment());
+            shipyardPlayer.CreateShip(DestroyerSize, RandomID(), RandomAlligment());
+            shipyardPlayer.CreateShip(CruiserSize, RandomID(), RandomAlligment());
+            shipyardPlayer.CreateShip(SubmarineSize, RandomID(), RandomAlligment());
+
+            shipyardCpu.CreateShip(AircraftCarrierSize, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(DestroyerSize, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(CruiserSize, RandomID(), RandomAlligment());
+            shipyardCpu.CreateShip(SubmarineSize, RandomID(), RandomAlligment());
 
             HumanPlayer player = new HumanPlayer(boardOne, "Player", false);
             CPUPlayerEasy cpu = new CPUPlayerEasy(boardTwo, "Computer", false);
 
             TurnTextBlock = turnTextBlock;
-            gameManager = new GameManager(gameCanvas ,boardOne, boardTwo, player, cpu);
+            gameManager = new GameManager(gameCanvas, boardOne, boardTwo, player, cpu);
         }
 
         public static bool RandomAlligment()
@@ -50,17 +52,17 @@ namespace Battleships
             int randomInt = randomAlligment.Next(0, 2);
             return randomInt == 0;
         }
-        public static int RandomID()
+       /*ublic static int RandomID()
         {
             Random random = new Random();
             return random.Next(9, 88);
         }
-        /*
+        */
         public static int RandomID()
         {
             Random random = new Random();
             return random.Next(0, 99);
         }
-        */
+        
     }
 }
